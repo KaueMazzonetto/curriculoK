@@ -1,65 +1,165 @@
-import Image from "next/image";
+"use client";
+
+import { Button } from "@/componentes/ui/button,";
+import { Card, CardContent } from "@/components/ui/card,";
+import { toast } from "sonner";
+import {
+  FaFileUpload,
+  FaSearch,
+  FaCheckCircle,
+  FaStar,
+} from "react-icons/fa";
 
 export default function Home() {
+  function handleCTA() {
+    toast.success("Funcionalidade de envio em breve 🚀");
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-white">
+
+      {/* NAVBAR */}
+      <header className="border-b">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <h1 className="font-bold text-lg">CVCheck</h1>
+
+          <nav className="hidden md:flex gap-6 text-sm">
+            <a href="#beneficios" className="hover:text-primary">Benefícios</a>
+            <a href="#como-funciona" className="hover:text-primary">Como funciona</a>
+          </nav>
+
+          <Button onClick={handleCTA}>Começar</Button>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="container mx-auto px-4 py-20 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold">
+          Seu currículo pronto para{" "}
+          <span className="text-primary">ser aprovado</span>
+        </h1>
+
+        <p className="mt-6 text-gray-600 max-w-xl mx-auto">
+          Analise seu currículo com inteligência e descubra exatamente o que
+          melhorar para conquistar mais entrevistas.
+        </p>
+
+        <div className="mt-8">
+          <Button size="lg" onClick={handleCTA}>
+            Enviar currículo
+          </Button>
+        </div>
+      </section>
+
+      {/* BENEFÍCIOS */}
+      <section id="beneficios" className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Benefícios do sistema
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card>
+              <CardContent className="p-6 space-y-3 text-center">
+                <FaSearch className="text-2xl mx-auto text-blue-600" />
+                <h3 className="font-semibold">Análise detalhada</h3>
+                <p className="text-sm text-gray-600">
+                  Identifica pontos fracos no seu currículo.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 space-y-3 text-center">
+                <FaCheckCircle className="text-2xl mx-auto text-green-600" />
+                <h3 className="font-semibold">Correções rápidas</h3>
+                <p className="text-sm text-gray-600">
+                  Sugestões simples e práticas para melhorar.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 space-y-3 text-center">
+                <FaStar className="text-2xl mx-auto text-yellow-500" />
+                <h3 className="font-semibold">Mais chances</h3>
+                <p className="text-sm text-gray-600">
+                  Aumente suas chances de conseguir entrevistas.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* COMO FUNCIONA */}
+      <section id="como-funciona" className="py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-10">
+            Como funciona
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <FaFileUpload className="text-3xl mx-auto text-primary" />
+              <h3 className="mt-4 font-semibold">1. Envie</h3>
+              <p className="text-sm text-gray-600">
+                Faça upload do seu currículo.
+              </p>
+            </div>
+
+            <div>
+              <FaSearch className="text-3xl mx-auto text-primary" />
+              <h3 className="mt-4 font-semibold">2. Análise</h3>
+              <p className="text-sm text-gray-600">
+                O sistema analisa automaticamente.
+              </p>
+            </div>
+
+            <div>
+              <FaCheckCircle className="text-3xl mx-auto text-primary" />
+              <h3 className="mt-4 font-semibold">3. Melhore</h3>
+              <p className="text-sm text-gray-600">
+                Receba sugestões e melhore seu CV.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROVA SOCIAL */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4 text-center max-w-2xl">
+          <h2 className="text-3xl font-bold mb-6">
+            O que usuários dizem
+          </h2>
+
+          <p className="text-gray-600 italic">
+            “Melhorei meu currículo e consegui uma entrevista em poucos dias.
+            Muito fácil de usar!”
           </p>
+
+          <span className="block mt-4 font-semibold">
+            — Usuário satisfeito
+          </span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-bold">
+          Comece agora gratuitamente
+        </h2>
+
+        <Button size="lg" className="mt-6" onClick={handleCTA}>
+          Analisar currículo
+        </Button>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t py-6 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} CVCheck
+      </footer>
+    </main>
   );
 }
